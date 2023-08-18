@@ -1,3 +1,11 @@
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+    title = ""
+  }
+  vim.lsp.buf.execute_command(params)
+end
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
@@ -13,7 +21,6 @@ return {
     ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
 
     -- Open file in browser
-    ["<space>r"] = { ":exe ':silent !firefox %'<cr>", desc = "Run Browser" },
     -- View treesitter highlight groups
     ["<space>k"] = { ":TSHighlightCapturesUnderCursor<cr>", desc = "View Highlight Group" },
     -- Easy splits
@@ -24,7 +31,9 @@ return {
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
 
-    ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
+    ["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "open projects" },
+    ["<leader>lor"] = { organize_imports, desc = "orgnizer import" },
+    
   },
   t = {
     -- setting a mapping to false will disable it
