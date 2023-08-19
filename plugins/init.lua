@@ -6,7 +6,7 @@ return {
   { "lvimuser/lsp-inlayhints.nvim", enabled = false},
   {
     "karb94/neoscroll.nvim",
-    event = "BufRead",
+  
     config = function()
       require("neoscroll").setup {
         -- All these keys will be mapped to their corresponding default scrolling animation
